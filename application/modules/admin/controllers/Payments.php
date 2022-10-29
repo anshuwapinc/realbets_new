@@ -194,8 +194,12 @@ class Payments extends My_Controller
                         'amount' => $amount,
                     );
                 } else {
-                    $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
-                    
+                    $update_arr = array(
+                        'user_id' => $user_id,
+                        'is_verify' => 'Yes'
+                    );
+                    $withdraw_type = $this->Withdraw_request_model->update_withdraw($update_arr);
+
                     $dataArray = array(
                         'user_id' => $user_id,
                         'user_name' => $user_detail->user_name,

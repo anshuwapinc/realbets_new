@@ -73,8 +73,9 @@ class Withdraw_request_model extends My_Model
         return $return;
     }
 
-    public function update_withdraw($user_id){
-        $this->db->where($where_arr);
+    public function update_withdraw($update_arr)
+    {
+        $this->db->where('user_id', $update_arr['user_id']);
         $this->db->update('registered_users', $update_arr);
     }
 }
