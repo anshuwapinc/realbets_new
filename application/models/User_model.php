@@ -45,7 +45,7 @@ class User_model extends My_Model
             foreach ($pagingParams['masters'] as $master) {
 
                 $master = (object) $master;
-                // p($master);
+            // p($master);
 
                 $this->db->or_where('master_id', $master->user_id);
             }
@@ -70,12 +70,13 @@ class User_model extends My_Model
             $this->db->like('name', $search);
             $this->db->or_like('user_name', $search);
             $this->db->group_end();
+
         }
 
         $return = $this->get_with_count(null, $pagingParams['records_per_page'], $pagingParams['offset']);
 
 
-        return $return;
+           return $return;
     }
 
 
@@ -158,7 +159,7 @@ class User_model extends My_Model
         if (count($dataValues) > 0) {
             if (array_key_exists('user_id', $dataValues) && !empty($dataValues['user_id'])) {
                 $this->db->where('user_id', $dataValues['user_id']);
-
+            
                 $dataValues["updated_at"] = date("Y-m-d H:i:s");
                 $this->db->where('is_delete', 'No');
                 $dataValues['last_update_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -175,7 +176,7 @@ class User_model extends My_Model
         return $user_id;
     }
 
-    public function update_password($where_arr, $update_arr)
+    public function update_password($where_arr,$update_arr)
     {
         $this->db->where($where_arr);
         $this->db->update('registered_users', $update_arr);
@@ -411,7 +412,9 @@ class User_model extends My_Model
 
 
             $return = $this->db->get()->result();
-        }
+
+
+         }
 
 
         return $return;
@@ -467,7 +470,7 @@ class User_model extends My_Model
         $this->db->where('site_code', $site_code);
 
 
-
+         
         $return = $this->db->get()->result_array();
 
         return $return;
@@ -482,7 +485,7 @@ class User_model extends My_Model
             $this->db->where('is_delete', 'No');
 
             $this->db->where('e.site_code', $site_code);
-
+           
             $return = $this->db->get()->result();
         }
 
@@ -500,7 +503,7 @@ class User_model extends My_Model
             $this->db->where('is_delete', 'No');
 
             $this->db->where('e.site_code', $site_code);
-
+           
             $return = $this->db->get()->result();
         }
 
@@ -517,7 +520,7 @@ class User_model extends My_Model
         // $this->db->where('d.status', 'Confirm');
         $this->db->where('registered_users.referral_code', $dataArray['referral_code']);
         $this->db->group_by('registered_users.user_id');
-        $query = $this->db->get();
+        $query = $this->db->get();        
         $return = $query->num_rows();
 
         return $return;

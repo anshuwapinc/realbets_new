@@ -97,6 +97,7 @@ class Admin extends My_Controller
                     if ($userRecord->site_code != $site_code) {
                         $this->session->set_flashdata('login_error_message', 'Invalid Username/Password');
 
+
                         redirect(base_url() . 'login');
                     }
                 } else {
@@ -272,6 +273,7 @@ class Admin extends My_Controller
                 $user_id = $this->User_info_model->addRegisteredUserInfo($dataArray);
 
 
+
                 $site_code = getCustomConfigItem('site_code');
                 $chips = $this->Chip_model->get_all_chips($site_code);
                 // p($chips);
@@ -444,21 +446,21 @@ class Admin extends My_Controller
         $dataArray["message"] = str_replace("otp_placeholder", $otp, getCustomConfigItem('sms_format'));
         $dataArray["number"] = $number;
         $res = sendOtp($dataArray);
-        // if (count($res) > 0) {
-        //     if ($res[0]->responseCode == "Message SuccessFully Submitted") {
-        $dataValue['number'] = $number;
-        $dataValue['otp'] = $otp;
-        $data = $this->Admin_model->getSavedOtp($dataValue);
-        if ($data) {
-            $data = $this->Admin_model->updateOtp($dataValue);
+        if (count($res) > 0) {
+            if ($res[0]->responseCode == "Message SuccessFully Submitted") {
+                $dataValue['number'] = $number;
+                $dataValue['otp'] = $otp;
+                $data = $this->Admin_model->getSavedOtp($dataValue);
+                if ($data) {
+                    $data = $this->Admin_model->updateOtp($dataValue);
+                } else {
+                    $data = $this->Admin_model->saveOtp($dataValue);
+                }
+                echo "TRUE";
+            }
         } else {
-            $data = $this->Admin_model->saveOtp($dataValue);
+            echo "FALSE";
         }
-        echo "TRUE";
-        //     }
-        // } else {
-        //     echo "FALSE";
-        // }
     }
     public function checkOtp()
     {

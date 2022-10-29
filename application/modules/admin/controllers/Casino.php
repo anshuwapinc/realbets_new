@@ -34,14 +34,14 @@ class Casino extends My_Controller
 
     function index($game_type = null)
     {
-
+        
         $userdata = $_SESSION['my_userdata'];
         $user_id = $userdata['user_id'];
         $dataArray['local_css'] = array(
             'login-styles',
             'bootstrap',
         );
-
+     
         if (get_user_type() == 'User') {
             /*************** Type = 1 is Market and event */
             $block_markets = get_users_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
@@ -60,10 +60,11 @@ class Casino extends My_Controller
             /*************** Type = 1 is Market and event */
             $block_markets = get_master_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
         }
-
+       
         $get_casino_event_type = getCustomConfigItem('casino_event_type');
         // p($block_markets);
         if (!empty($block_markets)) {
+
             foreach ($block_markets as $block_market) {
                 if ($block_market['event_type_id'] == $get_casino_event_type[$game_type]) {
                     redirect('/');
@@ -144,6 +145,7 @@ class Casino extends My_Controller
                     if (get_user_type() == 'User') {
                         if (!empty($bettings)) {
                             $exposure = get_user_market_exposure_by_marketid($market_id);
+
 
                             $runners = $exchangeData[$event_id]['market_types'][$market_id]['runners'];
 
@@ -253,6 +255,7 @@ class Casino extends My_Controller
                 }
             }
 
+
             $dataArray['events'] = $exchangeData;
 
             $marketExchangeHtml = $this->load->viewPartial('casinoExchangeHtml', $dataArray);
@@ -261,6 +264,7 @@ class Casino extends My_Controller
 
             $dataArray['marketExchangeHtml'] = $marketExchangeHtml;
             $dataArray['fancyExchangeHtml'] = $fancyExchangeHtml;
+
 
             // echo json_encode($dataArray);
 
@@ -705,15 +709,15 @@ class Casino extends My_Controller
         $response = '{"type":"teen20","success":true,"data":[{"createdBy":"2sgamix","marketHeader":"Match odds","roundId":"10180071","indexCard":[],"hash":"ajidsfvli.uad","salt":"","_id":"60bd06cead111c7824bdfed4","gameId":"56768","marketRunner":[{"cards":["H4","C10","S2"],"type":"plain","back":[],"lay":[],"id":"76766","name":"Player A","sortPriority":1,"pl":0,"status":"LOSER","resDesc":""},{"cards":["C12","S10","H11"],"type":"plain","back":[],"lay":[],"id":"76767","name":"Player B","sortPriority":2,"pl":0,"status":"WINNER","resDesc":"STRAIGHT"}],"gameType":"teenpatti","gameSubType":"T20","runnerType":"plain","stage":0,"timer":4,"createdAt":"2021-06-06T17:33:02.894Z","updatedAt":"2021-06-06T17:34:17.052Z","__v":0,"marketValidity":1623000864,"status":"CLOSED","matchName":"Teenpatti T20"},{"createdBy":"2sgamix","marketHeader":"Pair Plus","roundId":"10180071","indexCard":[],"hash":"ajidsfvli.uad","salt":"","_id":"60bd06cead111c7824bdfed5","gameId":"56768","marketRunner":[{"cards":["H4","C10","S2"],"type":"plus","back":[],"lay":[],"id":"76768","name":"Player A+","sortPriority":1,"pl":0,"status":"LOSER","resDesc":""},{"cards":["C12","S10","H11"],"type":"plus","back":[],"lay":[],"id":"76769","name":"Player B+","sortPriority":2,"pl":0,"status":"WINNER","resDesc":"STRAIGHT"}],"gameType":"teenpatti","gameSubType":"T20","runnerType":"plus","stage":0,"timer":4,"createdAt":"2021-06-06T17:33:02.899Z","updatedAt":"2021-06-06T17:34:17.057Z","__v":0,"marketValidity":1623000864,"status":"CLOSED","matchName":"Teenpatti T20"}]}';
 
 
-        $data = json_decode($response);
+         $data = json_decode($response);
         $results = $data->data;
 
-        foreach ($results as $result) {
+         foreach ($results as $result) {
             $market_id = $result->_id;
             $marketRunners = $result->marketRunner;
             $bettings = $this->Betting_model->get_casino_open_bets_by_marketid(array('market_id' => $market_id));
 
-
+           
             foreach ($bettings as $betting) {
 
                 $selection_id = $betting->selection_id;
@@ -774,55 +778,55 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit + $user_amt;
                                             $balance = $user_details->balance  - $betting->profit + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss + $user_amt;
                                             $balance = $user_details->balance  + $betting->loss + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
-                                                'is_exposure_update' =>  'Yes',
-                                                'is_winnings_update' =>  'Yes',
-
+                    'is_exposure_update' =>  'Yes',
+                    'is_winnings_update' =>  'Yes',
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings + $user_amt;
                                         $balance = $user_details->balance + $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -856,58 +860,59 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit - $user_amt;
                                             $balance = $user_details->balance  - $betting->profit - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
-                                                'is_exposure_update' =>  'Yes',
-                                                'is_winnings_update' =>  'Yes',
-
+                    'is_exposure_update' =>  'Yes',
+                    'is_winnings_update' =>  'Yes',
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
-
-
+        
+        
+                                        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss - $user_amt;
                                             $balance = $user_details->balance  + $betting->loss - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
-
-                                            $user_id = $this->User_model->addUser($data);
-                                        }
+        
+                                             $user_id = $this->User_model->addUser($data);
+        
+                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings - $user_amt;
                                         $balance = $user_details->balance - $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -916,7 +921,7 @@ class Casino extends My_Controller
                         }
                     } else {
 
-                        if ($marketRunner->status == 'WINNER') {
+                         if ($marketRunner->status == 'WINNER') {
 
                             $dataArray = array(
                                 'market_id' => $market_id,
@@ -932,7 +937,7 @@ class Casino extends My_Controller
                             $total_profit = 0;
                             $total_loss = 0;
 
-
+                           
                             if ($betting->is_back == 1 && $betting->selection_id == $entry) {
                                 $total_profit = $betting->profit;
 
@@ -962,55 +967,55 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit + $user_amt;
                                             $balance = $user_details->balance  - $betting->profit + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss + $user_amt;
                                             $balance = $user_details->balance  + $betting->loss + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings + $user_amt;
                                         $balance = $user_details->balance + $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -1045,58 +1050,59 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit - $user_amt;
                                             $balance = $user_details->balance  - $betting->profit - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
-
-
+        
+        
+                                        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss - $user_amt;
                                             $balance = $user_details->balance  + $betting->loss - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
-
-                                            $user_id = $this->User_model->addUser($data);
-                                        }
+        
+                                             $user_id = $this->User_model->addUser($data);
+        
+                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings - $user_amt;
                                         $balance = $user_details->balance - $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -1132,14 +1138,14 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit - $user_amt;
                                             $balance = $user_details->balance  - $betting->profit - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
@@ -1150,39 +1156,40 @@ class Casino extends My_Controller
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
-
-
+        
+        
+                                        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss - $user_amt;
                                             $balance = $user_details->balance  + $betting->loss - $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
-
-                                            $user_id = $this->User_model->addUser($data);
-                                        }
+        
+                                             $user_id = $this->User_model->addUser($data);
+        
+                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings - $user_amt;
                                         $balance = $user_details->balance - $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -1216,55 +1223,55 @@ class Casino extends My_Controller
                                 if ($betting->status == 'Settled') {
 
                                     if ($betting->bet_result == 'Plus') {
-
+        
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings - $betting->profit + $user_amt;
                                             $balance = $user_details->balance  - $betting->profit + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     } else  if ($betting->bet_result == 'Minus') {
                                         $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                         if (!empty($user_details)) {
-
+        
                                             $winnings = $user_details->winings + $betting->loss + $user_amt;
                                             $balance = $user_details->balance  + $betting->loss + $user_amt;
-
+        
                                             $data = array(
                                                 'user_id' => $betting->user_id,
                                                 'is_balance_update' =>  'Yes',
                                                 'is_exposure_update' =>  'Yes',
                                                 'is_winnings_update' =>  'Yes',
-
+        
                                             );
                                             $user_id = $this->User_model->addUser($data);
                                         }
                                     }
                                 } else if ($betting->status == 'Open') {
                                     $user_details = $this->User_model->getUserById($betting->user_id);
-
+        
                                     if (!empty($user_details)) {
-
+        
                                         $winnings = $user_details->winings + $user_amt;
                                         $balance = $user_details->balance + $user_amt;
-
+        
                                         $data = array(
                                             'user_id' => $betting->user_id,
                                             'is_balance_update' =>  'Yes',
                                             'is_exposure_update' =>  'Yes',
                                             'is_winnings_update' =>  'Yes',
-
+        
                                         );
                                         $user_id = $this->User_model->addUser($data);
                                     }
@@ -1297,85 +1304,5 @@ class Casino extends My_Controller
             }
         }
         // p($events);
-    }
-
-    public function CreateJwtAndLaunchCasino()
-    {
-        $game = $this->input->post('game');
-
-        if ($game == "lucky7") {
-            $game = "lucky7a";
-        } else if ($game == "lucky7eu") {
-            $game = "lucky7b";
-        } else if ($game == "dt20") {
-            $game = "getdt";
-        } else if ($game == "teenpatti/t20") {
-            $game = "teen20";
-        } else if ($game == "card32a") {
-            $game = "get32a";
-        } else if ($game == "card32b") {
-            $game = "get32b";
-        } else if ($game == "teenpatti/oneday") {
-            $game = "odtp";
-        } else if ($game == "teenpatti/test") {
-            $game = "ttp";
-        }
-
-        $event_type_arr = getCustomConfigItem('diamond_casino_event_type');
-
-        $event_type = $event_type_arr[$game];
-
-        if (get_user_type() == 'User') {
-
-            $block_markets = get_users_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
-        } else if (get_user_type() == 'Admin') {
-
-            $block_markets = get_admin_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
-        } else if (get_user_type() == 'Hyper Super Master') {
-
-            $block_markets = get_hyper_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
-        } else if (get_user_type() == 'Super Master') {
-            $block_markets = get_super_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
-        } else if (get_user_type() == 'Master') {
-            $block_markets = get_master_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
-        }
-
-        $is_blocked = false;
-
-        foreach ($block_markets as $block_market) {
-            if ($block_market['event_type_id'] == $event_type) {
-                $is_blocked = true;
-            }
-        }
-
-
-        if ($is_blocked == true) {
-            $result = array(
-                'message' => "Casino Blocked",
-                'status' => "200"
-            );
-            echo json_encode($result);
-            exit;
-        } else {
-            $payload = array(
-                'username' => get_user_id(),
-                'sitename' => 'http://maxcric247.bet/',
-                'balance' => count_total_balance(get_user_id()),
-                'is_react' => "No"
-            );
-            $game = $this->input->post('game');
-            $jwt_token =  get_jwt_casino_token($payload);
-
-            // $casino_link = "http://allcasino.zone/casino/" . $game . "/" . $jwt_token;
-            $casino_link = "http://allcasino.zone/casino/" . $game . "/" . $jwt_token;
-            // p($casino_link);
-            $result = array(
-                'message' => "success",
-                'casino_link' => $casino_link,
-                'status' => "200"
-            );
-            echo json_encode($result);
-            exit;
-        }
     }
 }

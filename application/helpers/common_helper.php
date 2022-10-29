@@ -4675,42 +4675,18 @@ function sendOtp($dataArray)
     $smsConfig['numbers'] = $dataArray['number'];
 
     $query = http_build_query($smsConfig);
-    // p($query);
+
     $url = "http://sms.hspsms.com/sendSMS?" . $query;
     $ch = curl_init();
-
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $data = curl_exec($ch);
     curl_close($ch);
-    // p($data);
 
     $arr = json_decode($data);
 
     return $arr;
 }
-
-function get_jwt_casino_token($data)
-{
-
-    $postdata = json_encode($data);
-    $url = get_ws_endpoint() . 'gettoken';
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    $result = curl_exec($ch);
-    curl_close($ch);
-
-    $result = json_decode($result, true);
-
-    return $result['token'] ? $result['token'] : '';
-}
-
 
 
 function generateNumericOTP()

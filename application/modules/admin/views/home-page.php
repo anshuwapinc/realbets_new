@@ -128,7 +128,7 @@
                      }
                   }
                   ?>
-
+                 
                </div>
             </div>
 
@@ -425,7 +425,7 @@ h81.92V199.936z"></path>
             </div> -->
             <?php if (!empty($casino_events['32c'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('card32a')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/32C.jpg">
+                  <a href="<?php echo base_url() ?>casino/32c"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/32C.jpg">
 
                   </a>
                </div>
@@ -437,13 +437,13 @@ h81.92V199.936z"></path>
             </div> -->
             <?php if (!empty($casino_events['t20'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('teenpatti/test')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/TT20.jpg">
+                  <a href="<?php echo base_url() ?>casino/t20"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/TT20.jpg">
                   </a>
                </div>
             <?php } ?>
             <?php if (!empty($casino_events['ltp'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('lucky7')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/3PT.jpg">
+                  <a href="<?php echo base_url() ?>casino/ltp"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/3PT.jpg">
 
                   </a>
                </div>
@@ -453,21 +453,21 @@ h81.92V199.936z"></path>
             </div> -->
             <?php if (!empty($casino_events['7ud'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('teenpatti/oneday')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/7U7D.jpg"></a>
+                  <a href="<?php echo base_url() ?>casino/7ud"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/7U7D.jpg"></a>
                </div>
             <?php } ?>
 
 
             <?php if (!empty($casino_events['dt20'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('card32b')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/dt.jpg"></a>
+                  <a href="<?php echo base_url() ?>casino/dt20"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/dt.jpg"></a>
                </div>
             <?php } ?>
 
 
             <?php if (!empty($casino_events['aaa'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-                  <a onclick="CreateJwtAndLaunchCasino('teenpatti/t20')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
+                  <a href="<?php echo base_url() ?>casino/aaa"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
                </div>
             <?php } ?>
 
@@ -798,34 +798,5 @@ if (get_user_type() == "User") {
          $_SESSION['wcaudio'] = "Played";
       }
       ?>
-   }
-</script>
-<script>
-   function CreateJwtAndLaunchCasino(game, admin = null) {
-
-      var folder = "admin";
-      if (admin != null) {
-         folder = "dealer";
-      }
-      $.ajax({
-         url: base_url + folder + '/Casino/CreateJwtAndLaunchCasino',
-         data: {
-            game: game
-         },
-         type: "POST",
-         dataType: "JSON",
-         success: function success(response) {
-
-            console.log('output', response);
-            response = JSON.parse(JSON.stringify(response));
-
-            if (response.message == "Casino Blocked") {
-               location.reload();
-            } else if (response.casino_link) {
-               window.open(response.casino_link, "_self");
-            }
-         }
-      });
-
    }
 </script>

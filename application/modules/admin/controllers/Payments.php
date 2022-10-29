@@ -19,7 +19,6 @@ class Payments extends My_Controller
         $this->load->model('PaymentMethods_model');
 
         $this->load->model('User_model');
-        $this->load->model('Admin_model');
         $this->load->model('Ledger_model');
         $this->load->model('Market_type_model');
         $this->load->model('Market_book_odds_fancy_model');
@@ -49,6 +48,7 @@ class Payments extends My_Controller
         if ($request_type == 'Deposit') {
             $this->form_validation->set_rules('reference_code', 'Reference Code', 'required|trim');
         }
+
         $type_arr =  getCustomConfigItem('account_type');
         if ($request_type == "Withdraw") {
             $type_arr =  getCustomConfigItem('account_type_withdraw');
@@ -64,14 +64,13 @@ class Payments extends My_Controller
             if ($request_type == 'Deposit') {
                 $this->load->view('deposit-request-form', $dataArray);
             } else {
-                $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
-                $dataArray['withdraw_type'] = $withdraw_type->is_verify;
                 $this->load->view('withdraw-request-form', $dataArray);
             }
         } else {
             if ($request_type == 'Withdraw') {
                 if ((float)count_total_balance($_SESSION['my_userdata']['user_id']) < $this->input->post('amount')) {
                     $this->session->set_flashdata('user_add_error', 'Sorry You Have Not have Enough Balance ');
+
                     // $this->load->view('withdraw-request-form', array('type_arr' => $type_arr, 'request_type' => $request_type));
                     redirect(base_url('withdrawuser'));
                     exit;
@@ -164,22 +163,10 @@ class Payments extends My_Controller
                 $this->session->set_flashdata('user_add_msg', ' Deposit request send successfully.');
                 redirect(base_url('deposituser'));
             } else  if ($request_type == 'Withdraw') {
+
                 $amount = $this->input->post('amount');
-                $number = $this->input->post('account_no');
                 // $preffered_method = $this->input->post('preffered_method');
                 $type = $this->input->post('type');
-
-                $dataValue['number'] =  $number;
-                $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
-                if (empty($withdraw_type)) {
-                    $otp = $this->input->post('otp');
-                    $data = $this->Admin_model->getSavedOtp($dataValue);
-                    if ($data->otp != $otp) {
-                        $this->session->set_flashdata('user_add_error', ' Wrong Otp Please Fill Again.');
-                        redirect('withdrawuser');
-                    }
-                }
-
 
                 if ($type == 'Bank') {
 
@@ -194,8 +181,6 @@ class Payments extends My_Controller
                         'amount' => $amount,
                     );
                 } else {
-                    $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
-                    
                     $dataArray = array(
                         'user_id' => $user_id,
                         'user_name' => $user_detail->user_name,
@@ -370,9 +355,9 @@ class Payments extends My_Controller
         $user_id = get_user_id();
         $dataArray = array();
         $deposit_requests = $this->Withdraw_request_model->get_withdraw_requests($user_id);
-        // p($deposit_requests);
 
         $dataArray['deposit_requests'] = $deposit_requests;
+        // p($payment_methods);
         // p($dataArray);
         $this->load->view('/withdraw-requests', $dataArray);
     }
