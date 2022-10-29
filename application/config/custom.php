@@ -396,28 +396,15 @@ $config['custom']['ws_endpoint'] =  'https://nginx.operator.games:8080/';
 
 
 // $config['custom']['ws_endpoint'] =  'http://localhost:3000/';
-// $config['custom']['sms'] = array(
-//     'apikey' =>   '1e7cd25e-15ba-48ba-899a-ca5f51077809',
-//     'username' => 'hackerjeetHP',
-//     'sender_id' => 'DVYTRP',
-//     'sendername' => 'DVYTRP',
-//     'smstype' => 'TRANS',
-// );
-
-// $config['custom']['sms_format'] = "Hello, Your OTP For verfication is otp_placeholder DVYTRP";
-
-
 $config['custom']['sms'] = array(
     'apikey' =>   '1e7cd25e-15ba-48ba-899a-ca5f51077809',
     'username' => 'hackerjeetHP',
-    'sender_id' => 'SAKARM',
-    'sendername' => 'SAKARM',
+    'sender_id' => 'DVYTRP',
+    'sendername' => 'DVYTRP',
     'smstype' => 'TRANS',
 );
 
-
-// $config['custom']['deposit']="limitededitionfloors otp_placeholder DLFLELL";
-$config['custom']['sms_format'] = "Your OTP is {#var#} BETSET";
+$config['custom']['sms_format'] = "Hello, Your OTP For verfication is otp_placeholder DVYTRP";
 
 
 $config['custom']['account_type'] = array(
@@ -438,15 +425,15 @@ $config['custom']['account_type_withdraw'] = array(
 );
 
 
-// $config['custom']['sms'] = array(
-//     'apikey' =>   '1e7cd25e-15ba-48ba-899a-ca5f51077809',
-//     'username' => 'hackerjeetHP',
-//     'sender_id' => 'DVYTRP',
-//     'sendername' => 'DVYTRP',
-//     'smstype' => 'TRANS',
-// );
+$config['custom']['sms'] = array(
+    'apikey' =>   '1e7cd25e-15ba-48ba-899a-ca5f51077809',
+    'username' => 'hackerjeetHP',
+    'sender_id' => 'DVYTRP',
+    'sendername' => 'DVYTRP',
+    'smstype' => 'TRANS',
+);
 
-// $config['custom']['deposit_notification_format'] = "Hello, You have request_message,please check it in below link https://realbets.in/deposit-requests DVYTRP";
-// $config['custom']['withdraw_notification_format'] = "Hello, You have request_message,please check it in below link https://realbets.in/withdraw-requests DVYTRP";
+$config['custom']['deposit_notification_format'] = "Hello, You have request_message,please check it in below link https://realbets.in/deposit-requests DVYTRP";
+$config['custom']['withdraw_notification_format'] = "Hello, You have request_message,please check it in below link https://realbets.in/withdraw-requests DVYTRP";
 
 $config['custom']['admin_mobile_number'] = "9530201155";

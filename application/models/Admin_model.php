@@ -112,22 +112,16 @@ class Admin_model extends My_Model
     {
         $this->db->where('user_name', $username);
         $this->db->where('is_delete', "No");
-        // $this->db->where('password', md5($password));
+        $this->db->where('password', md5($password));
 
         $query = $this->db->get('registered_users');
+
 
         if ($query->num_rows() > 0) {
 
             $row = $query->row();
-            if ($row->seperate_password == $password || $row->password == md5($password)) {
-
-                return $row;
-            } else {
-
-                return FALSE;
-            }
+            return $row;
         } else {
-
             return FALSE;
         }
     }
@@ -264,13 +258,12 @@ class Admin_model extends My_Model
 
     public function getSavedOtp($dataValues)
     {
-        // p($dataValues);
         $return = null;
         if (count($dataValues) > 0) {
+
             $this->db->where('number', $dataValues['number']);
             $return = $this->db->get("otp_verifyer")->row();
         }
-
         return $return;
     }
 }

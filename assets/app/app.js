@@ -1781,6 +1781,7 @@ function setCookieMatch(MarketId, matchId, isMatchOdds) {
         };
     } */
     function lobbylink(game = 1) {
+
         if (game == 4) {
             var url = site_url + 'livegames';
         } else if (game == 3) {
