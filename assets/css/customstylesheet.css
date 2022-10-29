@@ -1,0 +1,31 @@
+
+   .error{
+        color: red !important;
+    }
+
+    .lottery_draw_type_element_datepicker.ui-datepicker-year { display:none }
+ .info-box {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  display: block;
+  margin-bottom: 15px;
+  min-height: 70px;
+  width: 100%;
+}
+.info-box-content {  margin-left: 90px;  padding: 5px 10px;}
+.info-box-icon {
+  background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+  border-radius: 2px 0 0 2px;
+  display: block;
+  float: left;
+  font-size: 18px;
+  height: 70px;
+  text-align: center;
+  width: 90px;
+  padding:10px;
+}
+.bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+  background-color: #00c0ef !important;
+  color: #fff !important;
+}

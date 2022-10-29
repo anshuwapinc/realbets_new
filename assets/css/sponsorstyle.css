@@ -1,0 +1,163 @@
+.sponsor_header {
+	background: rgba(0, 0, 0, 0) url("../images/bg.jpg") no-repeat scroll 0 0 / 100% 100%;
+	margin: 0;
+	padding: 20px 0;
+	text-align: center;
+	width: 100%;
+}
+.sponser_hedding_area h1 {
+	margin:20px 0;
+	padding:0;
+	width:100%;
+	text-align:center;
+	font-size:42px;
+	color:#FFF;
+}
+.sponser_hedding_area p {
+	margin:20px 0;
+	padding:0;
+	width:100%;
+	text-align:center;
+	font-size:24px;
+	color:#FFF;
+}
+.sponsor_content_area {
+	margin:0;
+	padding:40px 0 0 0;
+	width:100%;
+}
+.sponsor_content_area h2 {
+	margin:0 0 60px 0;
+	padding:0;
+	font-size:36px;
+	color:#3c414d;
+	text-align:center;
+}
+.sponsor_content_area h3 {
+	margin:0 0 20px 0;
+	padding:0;
+	font-size:24px;
+	color:#3c414d;
+	text-align:center;
+}
+.sponsor_post {
+	margin-bottom: 60px;
+	min-height: 320px;
+	text-align: center
+}
+.sponsor_post img {
+	height: 100%;
+	margin-bottom: 0;
+	padding: 20px;
+	width: 100%;
+}
+.sponsor_post h1 {
+	margin:20px 0 0 0;
+	padding:0;
+	font-size:28px;
+	color:#3c414d;
+	text-align:center;
+}
+.sponsor_post h1 span {
+	background: #00dbd9 none repeat scroll 0 0;
+	border-radius: 20px;
+	color: #fff;
+	padding: 5px 10px;
+}
+.sponsor_post_image {
+	margin:0 auto;
+	padding:0;
+	width:192px;
+}
+.sponsor_post_image img {
+	border-radius: 50%;
+	height: 192px;
+	margin: 0;
+	padding: 0;
+	width: 192px;
+}
+.sponsor_post span {
+	background: url("../images/num_bg.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+	color: #fff;
+	float: right;
+	font-family: Arial;
+	font-size: 26px;
+	height: 56px;
+	margin: -50px 0 0;
+	padding: 9px 0;
+	position: relative;
+	width: 56px;
+}
+.sponsor_post p {
+	margin:0;
+	padding:0;
+	font-size:24px;
+	color:#3c414d;
+	text-align:center;
+	font-family:Arial;
+}
+ @media (min-width: 0px) and (max-width: 480px) {
+ .sponsor_header img {
+ height: auto !important;
+ width: 100%;
+}
+ .sponser_hedding_area h1 {
+font-size:24px;
+margin-bottom: 10px;
+}
+ .sponser_hedding_area p {
+ font-size: 16px;
+ margin: 0 0 30px;
+}
+ .sponsor_post_image {
+ margin: 0 auto;
+ padding: 0;
+ width: 130px;
+}
+ .sponsor_post_image img {
+ height: 130px;
+ width: 130px;
+}
+ .sponsor_post span {
+ background: url("../images/num_bg.png") no-repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+ color: #fff;
+ float: right;
+ font-family: Arial;
+ font-size: 16px;
+ height: 36px;
+ margin: -35px 0 0;
+ padding: 7px 0;
+ position: relative;
+ width: 36px;
+}
+ .sponsor_post h1 {
+font-size:16px;
+}
+ .sponsor_post p {
+font-size:14px;
+}
+ .sponsor_post {
+ margin-bottom: 30px;
+ min-height: 0;
+ text-align: center;
+}
+}
+ @media (min-width: 481px) and (max-width: 768px) {
+ .sponsor_header img {
+ height: auto !important;
+ width: 100%;
+}
+ .sponser_hedding_area h1 {
+font-size:40px;
+margin-bottom: 10px;
+}
+ .sponser_hedding_area p {
+ font-size: 24px;
+ margin: 0 0 30px;
+}
+ .sponsor_post {
+ margin-bottom: 30px;
+ min-height: 0;
+ text-align: center;
+}
+}

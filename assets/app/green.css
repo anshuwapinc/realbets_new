@@ -1,0 +1,35 @@
+.headerlogo:before{background-color:#147b45;}
+.btn-success{background-color: #147b45!important;border-color: #147b45!important;color:#fff;}
+header{background:#147b45;}
+.sidebar-content .logout_btn{border: solid 1px #147b45;color:#fff;}
+.sidebar-content .logout_btn.active{background: #147b45;color:#fff;}
+.sidebar-content .boxs-left .user_detial .user-dummy{fill:#147b45}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a:after{color:#147b45;}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown >a:after{color:#147b45;}
+@keyframes shadowSlide{0%,100%,50%
+{text-shadow:0 0 50px rgba(155,105,0,0),0 0 50px transparent,0 0 5px rgba(181,123,0,0);
+fill:#2ea767;}
+25%{text-shadow:0 0 54px #2ea767,0 0 50px rgba(0,0,0,.21),0 0 5px rgba(181,123,0,.39);
+fill:#fff;}
+}
+.strt-time{border-left: 3px solid #147b45;}
+.btn-info {color: #fff;background-color: #147b45;border-color: #147b45;}
+.marketTitle svg{fill:#fff;}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before{color:#147b45;}
+.search_btn{background:#147b45;color:#fff;}
+.dismiss_btn{background-color:#147b45;border-color:#147b45;}
+.closebtn33{color:#147b45;}
+.bet-box-footer .cancle-bet{border-color: #147b45;color:#fff;}
+.bet-box-footer .place-bet{background: #147b45;color:#fff;}
+.mod-header.tab_bets .nav-pills>li.active>a{border: 1px solid #147b45;background: #147b45;}
+.mod-header button{background-color: #147b45;border: solid 1px #147b45;color:#fff;}
+
+
+
+
+
+
+
+
+
+

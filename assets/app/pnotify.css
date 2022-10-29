@@ -1,0 +1,213 @@
+.ui-pnotify {
+	top: 36px;
+	right: 36px;
+	position: absolute;
+	height: auto;
+	z-index: 2
+}
+
+body>.ui-pnotify {
+	position: fixed;
+	z-index: 100040
+}
+
+.ui-pnotify-modal-overlay {
+	background-color: rgba(0, 0, 0, .4);
+	top: 0;
+	left: 0;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1
+}
+
+body>.ui-pnotify-modal-overlay {
+	position: fixed;
+	z-index: 100039
+}
+
+.ui-pnotify.ui-pnotify-in {
+	display: block!important
+}
+
+.ui-pnotify.ui-pnotify-move {
+	transition: left .5s ease, top .5s ease, right .5s ease, bottom .5s ease
+}
+
+.ui-pnotify.ui-pnotify-fade-slow {
+	transition: opacity .6s linear;
+	opacity: 0
+}
+
+.ui-pnotify.ui-pnotify-fade-slow.ui-pnotify.ui-pnotify-move {
+	transition: opacity .6s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease
+}
+
+.ui-pnotify.ui-pnotify-fade-normal {
+	transition: opacity .4s linear;
+	opacity: 0
+}
+
+.ui-pnotify.ui-pnotify-fade-normal.ui-pnotify.ui-pnotify-move {
+	transition: opacity .4s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease
+}
+
+.ui-pnotify.ui-pnotify-fade-fast {
+	transition: opacity .2s linear;
+	opacity: 0
+}
+
+.ui-pnotify.ui-pnotify-fade-fast.ui-pnotify.ui-pnotify-move {
+	transition: opacity .2s linear, left .5s ease, top .5s ease, right .5s ease, bottom .5s ease
+}
+
+.ui-pnotify.ui-pnotify-fade-in {
+	opacity: 1
+}
+
+.ui-pnotify .ui-pnotify-shadow {
+	-webkit-box-shadow: 0 6px 28px 0 rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 6px 28px 0 rgba(0, 0, 0, .2);
+	box-shadow: 0 6px 28px 0 rgba(0, 0, 0, .2)
+}
+
+.ui-pnotify-container {
+	background-position: 0 0;
+	padding:0px;
+	height: 100%;
+	margin: 0;
+
+}
+
+
+
+/*sucsess-box-or-Error-box-start*/
+
+
+.ui-pnotify .alert-success, .alert-info, .alert-danger{background:#fff;text-align:center;padding: 10px;}
+
+.ui-pnotify-icon span{font-size:20px;}
+
+/*sucsess-box-or-Error-box-End*/
+
+
+
+.ui-pnotify-text{font-size:13px;}
+
+
+.alert-danger.ui-pnotify-shadow{color:#e95350;background-color:#f4d7d6;display: inline-block;width: 100%;border-color:f2bdbb;}
+
+.alert-success.ui-pnotify-shadow{color: #468847;background-color: #DFF0D8;display: inline-block;width: 100%;border-color: #D6E9C6;}
+
+.alert-info.ui-pnotify-shadow{ padding: 5px 10px !important;}
+
+.ui-pnotify-container:after {
+	content: " ";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both
+}
+
+.ui-pnotify-container.ui-pnotify-sharp {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0
+}
+
+.ui-pnotify-title {
+	display: block;
+	margin-bottom:0px;
+	margin-top: 0;
+	font-size:20px;
+}
+
+
+.ui-pnotify.stack-bottomleft,
+.ui-pnotify.stack-topleft {
+	left: 25px;
+	right: auto
+}
+
+.ui-pnotify.stack-bottomleft,
+.ui-pnotify.stack-bottomright {
+	bottom: 25px;
+	top: auto
+}
+
+.ui-pnotify.stack-modal {
+	left: 50%;
+	right: auto;
+	margin-left: -150px
+}
+
+
+
+/*Error-box-start*/
+
+.alert-danger .ui-pnotify-icon, .alert-danger .ui-pnotify-title{
+	color:#e95350;
+    padding: 2px 0px;
+    display: inline-block;
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+	position:relative;
+	    margin-left: 35px;}
+		
+		
+.alert-danger .ui-pnotify-title:before{   
+    position: absolute;
+    background: url(../images/warning.png);
+    content: '';
+    width: 25px;
+    height: 25px;
+    left: -35px;
+    background-size: cover;
+    top: -3px;
+	}			
+		
+
+.fa-check, .fa-info, .fa-times, .fa-warning{
+	background:#fff;
+	height:25px;
+	width:25px;
+	text-align:center;
+	font-size:15px;
+	border-radius:100%;
+	color:#121212;
+	line-height:25px;
+	display:inline-block;
+	float:left;
+	}
+
+.alert-success .ui-pnotify-text{padding: 20px 0px;color: #468847;display: inline;}
+.alert-danger .ui-pnotify-text{padding: 20px 0px;color: #e95350;display: inline;}
+
+
+.alert-success .ui-pnotify-icon, .alert-success .ui-pnotify-title{
+    color: #22b573;
+    padding: 2px 0px;
+    display: inline-block;
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+	position:relative;
+	    margin-left: 35px;
+	}
+
+	
+.alert-success .ui-pnotify-title:before{   
+     position: absolute;
+    background: url(../images/checkmark.png);
+    content: '';
+    width: 25px;
+    height: 25px;
+    left: -35px;
+    background-size: cover;
+    top: -3px;
+	}	
+
+/*Error-box-End*/

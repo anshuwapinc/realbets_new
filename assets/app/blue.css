@@ -1,0 +1,56 @@
+body{background-color:#fff;}
+.right-bet-content { background-color: #efefef;}
+.casinoowl p {color: #000000;}
+.market-listing-table {color: #000;background: #ffffff;}
+.event-name{color:#000;}
+.matchtime {color: #2b2b2b;}
+.match_box{border-bottom: 1px solid #e2e2e2;}
+.owl-game{border-bottom: 1px solid #e2e2e2;}
+.market-listing-table{border: 1px solid #e2e2e2;}
+.odds_rows {background: #ffffff;border-bottom: 1px solid #e2e2e2;}
+.bet_mob {background: #ffffff;border-bottom: 1px solid #e2e2e2;color: #000;}
+.player-draw {color: #000;}
+.game-head {background-color: #ffffff;border-bottom: 1px solid #e2e2e2;color: #243A48;}
+.form-control {color: #000!important;border: 1px solid #e2e2e2;background-color: transparent;}
+.checkbox label, .radio label{color:#000;}
+.fancy-rows {background: #ffffff;border: 1px solid #e2e2e2;}
+.fancy-stake{color:#000;}
+.ng_value{color: #000000;}
+.round-status{color: #fff;background: #00adee;margin-bottom: 3px;}
+.match_names a:hover {color: #00adee;}
+
+.headerlogo:before{background-color:#00ADEE;}
+.btn-success{background-color: #00ADEE!important;border-color: #00ADEE!important;color:#fff;}
+header{background:#00ADEE;}
+.sidebar-content .logout_btn{border: solid 1px #00ADEE;color:#00ADEE;}
+.sidebar-content .logout_btn.active{background: #00ADEE;color:#fff;}
+.sidebar-content .boxs-left .user_detial .user-dummy{fill:#00ADEE}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown.active > a:after{color:#00ADEE;}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown >a:after{color:#00ADEE;}
+@keyframes shadowSlide{0%,100%,50%
+{text-shadow:0 0 50px rgba(155,105,0,0),0 0 50px transparent,0 0 5px rgba(181,123,0,0);
+fill:#60d1fb;}
+25%{text-shadow:0 0 54px #60d1fb,0 0 50px rgba(0,0,0,.21),0 0 5px rgba(181,123,0,.39);
+fill:#fff;}
+}
+.strt-time{border-left: 3px solid #00ADEE;}
+.btn-info {color: #fff;background-color: #00ADEE;border-color: #00ADEE;}
+.marketTitle svg{fill:#00ADEE;}
+.sidebar-wrapper .sidebar-menu .sidebar-dropdown .sidebar-submenu li a:before{color:#00ADEE;}
+.search_btn{background:#00ADEE;color:#fff;}
+.dismiss_btn{background-color:#00ADEE;border-color:#00ADEE;}
+.closebtn33{color:#00ADEE;}
+.bet-box-footer .cancle-bet{border-color: #00ADEE;color:#00ADEE;}
+.bet-box-footer .place-bet{background: #00ADEE;color:#fff;}
+.mod-header.tab_bets .nav-pills>li.active>a{border: 1px solid #00ADEE;background: #00ADEE;}
+.mod-header button{background-color: #00adee;border: solid 1px #00adee;color:#fff;}
+.game-provider-tabs .nav-tabs li a{color:#000;}
+.game-provider-tabs .nav-tabs>li.active>a, .game-provider-tabs .nav-tabs>li.active>a:focus, .game-provider-tabs .nav-tabs>li.active>a:hover{color: #00adee;}
+
+.stack_input_field input{color: #fff!important;}
+
+
+
+
+
+

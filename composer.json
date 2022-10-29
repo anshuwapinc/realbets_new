@@ -1,0 +1,6 @@
+{
+    "name": "365exchange/vip",
+    "require": {
+        "workerman/phpsocket.io":"^1.1"
+    }
+}

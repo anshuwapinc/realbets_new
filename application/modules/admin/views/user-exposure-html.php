@@ -1,0 +1,1 @@
+<a href="<?php echo base_url(); ?>gameclientbet/<?php echo $user['user_id']; ?>" target="_blank"><?php echo isset($total_exposure) ?  number_format($total_exposure,2) : number_format(0.00, 2); ?></a>

@@ -1,0 +1,24 @@
+ul#example {
+	list-style: none;
+	margin: 5px 0;
+	padding: 0;
+	display: block;
+	text-align: center;
+}
+ul#example li {
+	display: inline-block;
+}
+ul#example li span {
+	font-size: 12px;
+	font-weight: 300;
+	line-height: 15px;
+}
+ul#example li.seperator {
+	font-size: 10px;
+	line-height: 15px;
+	vertical-align: top;
+}
+ul#example li p {
+	color: #a7abb1;
+	font-size: 10px;
+}

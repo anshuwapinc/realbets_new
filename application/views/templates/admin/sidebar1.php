@@ -1,0 +1,160 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="<?php echo base_url(); ?>admin/dashboard" class="brand-link">
+        <img src="<?php echo base_url(); ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Sports Book</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block"><?php echo $_SESSION['my_userdata']['username']; ?></a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <?php
+                if ($_SESSION['my_userdata']['usertype'] === 'admin') { ?>
+
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url(); ?>admin/dashboard" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/dashboard.png" height="25" />
+
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url(); ?>admin/users" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/dashboard.png" height="25" />
+
+                            <p>
+                                User
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>admin/teams" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/users1.png" height="25" />
+                            <p>
+                                Teams
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>admin/players" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/players.png" height="25" />
+                            <p>
+                                Players
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>admin/users" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/person.png" height="25" />
+                            <p>
+                                Users
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>admin/matches" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/teams.png" height="25" />
+                            <p>
+                                Matches
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>admin/reports" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/report.png" height="25" />
+                            <p>
+                                Reports
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+                <?php   } else if ($_SESSION['my_userdata']['usertype'] === 'user') {
+                ?>
+                    <li class="nav-item ">
+                        <a href="<?php echo base_url(); ?>dashboard" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/dashboard.png" height="25" />
+
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>matches" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/teams.png" height="25" />
+
+                            <p>
+                                Matches
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="<?php echo base_url(); ?>reports" class="nav-link">
+                        <img src="<?php echo base_url(); ?>assets/images/report.png" height="25" />
+
+                            <p>
+                                Result/Reports
+                                <i class="right fas fa-angle-right"></i>
+                            </p>
+                        </a>
+                    </li>
+
+
+                <?php
+                }
+                ?>
+ -->
+
+
+
+
+                <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>changepassword" class="nav-link">
+                        <i class="nav-icon fa fa-key"></i>
+                        <p>
+                            Change Password
+                            <i class="right fas fa-angle-right"></i>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+            </li>
+
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

@@ -1,0 +1,55 @@
+<div id="user_row_" class="lotus-title sportrow-4">
+      <div class="head-matchname">
+         <div class="match-head">Cricket</div>
+         <div class="match-odds-right">
+            <div class="items-up-odds">1</div>
+            <div class="items-up-odds">x</div>
+            <div class="items-up-odds">2</div>
+         </div>
+      </div>
+   </div>
+   <?php
+
+   //   p($crickets);
+   if (isset($crickets) && !empty($crickets)) {
+
+      foreach ($crickets as $cricket) {
+
+         $tomorrow = date("Y-m-d", time() + 86400);
+
+   ?>
+         <div id="user_row_" class="sport_row sportrow-4  matchrow-<?php echo $cricket['event_id']; ?>" onclick="MarketSelection(<?php echo $cricket['market_id']; ?>,<?php echo $cricket['event_id']; ?>);" title="Match OODS">
+            <div class="sport_name">
+               <time><?php echo date('d M Y H:i:s', strtotime($cricket['open_date'])); ?></time>
+               <span id='fav<?php echo $cricket['event_id']; ?>'><i class='fa fa-star-o' aria-hidden='true'></i></span>
+               <a href="javascript:;">
+                  <?php echo $cricket['event_name'] ?> </a>
+            </div>
+            <div class="match_status">
+
+               <?php
+               if ($cricket['inplay']) { ?>
+                  <span class="inplay_txt">In-play </span>
+               <?php     } else { ?>
+                  <span class="going_inplay">Going In-play</span>
+               <?php }
+               ?>
+            </div>
+
+            <div class="match_odds_front">
+
+
+               <span class="back-cell"><?php echo isset($cricket['runners'][0]['back_1_price']) ? $cricket['runners'][0]['back_1_price'] : ''; ?></span>
+               <span class="lay-cell"><?php echo isset($cricket['runners'][0]['lay_1_price']) ?  isset($cricket['runners'][0]['lay_1_price']) : ''; ?></span>
+
+
+               <span class="back-cell">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+               <span class="lay-cell">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+               <span class="back-cell"><?php echo isset($cricket['runners'][1]['back_1_price']) ? $cricket['runners'][1]['back_1_price'] : ''; ?></span>
+               <span class="lay-cell"><?php echo isset($cricket['runners'][1]['lay_1_price']) ? $cricket['runners'][1]['lay_1_price'] : ''; ?></span>
+            </div>
+         </div>
+   <?php }
+   }
+   ?>

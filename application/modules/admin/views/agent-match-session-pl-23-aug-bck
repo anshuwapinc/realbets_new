@@ -1,0 +1,184 @@
+<div class="right_col" role="main">
+    <div class="col-md-12" style="margin-top:10px;">
+        <div class="title_new_at"> Sport Details <small>Display Sport Details Like Match & Session Position etc.</small>
+        </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <?php
+        // p($reports);
+        // if(!empty($reports))
+        // {
+        //     foreach($reports as $report)
+        //     {
+
+        //     }
+        // }
+        ?>
+        <table style="margin-bottom:30px;" class="table table-striped table-bordered">
+            <tbody>
+                <tr>
+                    <td width="60"><strong>AGENT</strong></td>
+                    <td><strong><?php echo $reports->user_name; ?></strong></td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="2" height="25">
+
+                        <!--CLIENT START HERE-->
+                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="2" class="table table-striped table-bordered" style="padding-bottom:100px;">
+                            <tbody>
+                                <tr>
+
+
+                                    <td colspan="11" align="right" valign="middle" style="text-align:center;"><strong>AGENT PLUS MINUS</strong></td>
+                                </tr>
+                                <tr>
+                                    <td width="180" height="25" align="left" valign="middle"><strong>CLIENT</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>M AMT</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>SESS.</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>TOT. AMT</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>M. COM</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>S. COM</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>TOL. COM</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>NET AMT</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>SHR AMT</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>MOB. APP</strong></td>
+                                    <td width="100" align="right" style="text-align:right;" valign="middle"><strong>FINAL</strong></td>
+                                </tr>
+
+                                <?php
+                                $users = $reports->users;
+                                $total_agent_match_amt = 0;
+                                $total_agent_sess_amt = 0;
+                                $total_agent_user_amt_and_comm = 0;
+                                $total_agent_match_comm = 0;
+                                $total_agent_session_comm = 0;
+                                $total_agent_match_session_comm = 0;
+                                $total_agent_net_amt = 0;
+                                $total_agent_share_net_amt = 0;
+                                $total_agent_final_net_amt = 0;
+
+
+                                if (!empty($users)) {
+                                    foreach ($users as $user) {
+
+                                        $total_user_amt =  $user->user['match_pl'] + $user->user['session_pl'];
+                                        $total_user_comm =  $user->user['user_match_comm'] + $user->user['user_session_comm'];
+
+                                        $total_user_amt_and_comm = $total_user_amt - $total_user_comm;
+
+                                        $total_agent_share_amt =  ($total_user_amt_and_comm * $user->master['partnership']) / 100;
+
+                                        $total_agent_match_amt += $user->user['match_pl'];
+                                        $total_agent_sess_amt += $user->user['session_pl'];
+                                        $total_agent_user_amt_and_comm  += $total_user_amt_and_comm;
+                                        $total_agent_match_comm += $user->user['user_match_comm'];
+                                        $total_agent_session_comm += $user->user['user_session_comm'];
+                                        $total_agent_match_session_comm += $total_agent_match_comm + $total_agent_session_comm;
+
+                                        $total_agent_net_amt += $total_user_amt_and_comm;
+
+                                        $total_agent_share_net_amt += $total_agent_share_amt;
+                                        $total_agent_final_net_amt += ($total_user_amt_and_comm - $total_agent_share_amt);
+
+                                ?>
+                                        <tr>
+                                            <td height="25" align="left" valign="middle" class="FontText"> <?php echo $user->user_name; ?>(<?php echo $user->name; ?>)</td>
+                                            <td style="text-align:right;"><?php echo number_format($user->user['match_pl'], 2); ?></td>
+                                            <td style="text-align:right;"><?php echo number_format($user->user['session_pl'], 2); ?></td>
+                                            <td style="text-align:right;"><strong><?php echo number_format($total_user_amt, 2); ?></strong></td>
+                                            <td style="text-align:right;"><?php echo number_format($user->user['user_match_comm'], 2); ?></td>
+                                            <td style="text-align:right;"><?php echo number_format($user->user['user_session_comm'], 2); ?></td>
+                                            <td style="text-align:right;"><strong><?php echo number_format($total_user_comm, 2); ?></strong></td>
+                                            <td style="text-align:right;"><strong><?php echo number_format($total_user_amt_and_comm, 2); ?></strong></td>
+                                            <td style="text-align:right;"><?php echo number_format($total_agent_share_amt, 2); ?></td>
+                                            <td style="text-align:right;">0.00</td>
+                                            <td style="text-align:right;"><strong><?php echo number_format($total_user_amt_and_comm - $total_agent_share_amt, 2); ?></strong></td>
+
+                                        </tr>
+
+                                <?php }
+                                } ?>
+                                <tr>
+                                    <td width="250" height="25" align="left" valign="middle"><strong>AGENT TOTAL</strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_match_amt, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_sess_amt, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_user_amt_and_comm, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_match_comm, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_session_comm, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_match_session_comm, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_net_amt, 2); ?></strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_share_net_amt, 2); ?> </strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong>0.00</strong></td>
+                                    <td valign="middle" style="text-align:right;"><strong><?php echo number_format($total_agent_final_net_amt, 2); ?></strong></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--CLIENT END HERE-->
+
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+<script>
+    $('#from-date').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        format: 'YYYY-MM-DD'
+    });
+    $('#to-date').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        format: 'YYYY-MM-DD'
+    });
+
+    function blockUI() {
+        $.blockUI({
+            message: ' <img src="<?php echo base_url() ?>spinner.gif" />'
+        });
+    }
+
+    function filterdata() {
+
+        var sportId = $("#sportid").val();
+        var tdate = $("#to-date").val();
+        var fdate = $("#from-date").val();
+        var searchTerm = $("input[name='searchTerm']").val();
+
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>admin/Reports/filterProfiltLoss',
+            data: {
+                sportId: sportId,
+                tdate: tdate,
+                fdate: fdate,
+                searchTerm: searchTerm,
+                user_id: "<?php echo $user_id; ?>"
+            },
+            type: "POST",
+            dataType: 'json',
+            beforeSend: function() {
+                blockUI();
+            },
+            complete: function() {
+                $.unblockUI();
+            },
+            success: function(res) {
+                $('#tablegh').html('');
+                $('#tablegh').html(res);
+            }
+        });
+    }
+</script>
