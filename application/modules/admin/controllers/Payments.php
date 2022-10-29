@@ -66,6 +66,7 @@ class Payments extends My_Controller
             } else {
                 $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
                 $dataArray['withdraw_type'] = $withdraw_type->is_verify;
+                // p($withdraw_type);
                 $this->load->view('withdraw-request-form', $dataArray);
             }
         } else {
