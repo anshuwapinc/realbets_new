@@ -172,7 +172,9 @@ class Payments extends My_Controller
 
                 $dataValue['number'] =  $number;
                 $withdraw_type = $this->Withdraw_request_model->get_withdraw($user_id);
-                if (empty($withdraw_type)) {
+                // $dataArray['withdraw_type'] = $withdraw_type->is_verify;
+                // p($withdraw_type);
+                if ($withdraw_type->is_verify == "No") {
                     $otp = $this->input->post('otp');
                     $data = $this->Admin_model->getSavedOtp($dataValue);
                     if ($data->otp != $otp) {

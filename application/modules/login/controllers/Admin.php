@@ -446,21 +446,21 @@ class Admin extends My_Controller
         $dataArray["message"] = str_replace("otp_placeholder", $otp, getCustomConfigItem('sms_format'));
         $dataArray["number"] = $number;
         $res = sendOtp($dataArray);
-        if (count($res) > 0) {
-            if ($res[0]->responseCode == "Message SuccessFully Submitted") {
-                $dataValue['number'] = $number;
-                $dataValue['otp'] = $otp;
-                $data = $this->Admin_model->getSavedOtp($dataValue);
-                if ($data) {
-                    $data = $this->Admin_model->updateOtp($dataValue);
-                } else {
-                    $data = $this->Admin_model->saveOtp($dataValue);
-                }
-                echo "TRUE";
-            }
+        // if (count($res) > 0) {
+        //     if ($res[0]->responseCode == "Message SuccessFully Submitted") {
+        $dataValue['number'] = $number;
+        $dataValue['otp'] = $otp;
+        $data = $this->Admin_model->getSavedOtp($dataValue);
+        if ($data) {
+            $data = $this->Admin_model->updateOtp($dataValue);
         } else {
-            echo "FALSE";
+            $data = $this->Admin_model->saveOtp($dataValue);
         }
+        echo "TRUE";
+        // }
+        // } else {
+        //     echo "FALSE";
+        // }
     }
     public function checkOtp()
     {

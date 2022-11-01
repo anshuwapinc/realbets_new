@@ -4675,6 +4675,7 @@ function sendOtp($dataArray)
     $smsConfig['numbers'] = $dataArray['number'];
 
     $query = http_build_query($smsConfig);
+    // p($query);
 
     $url = "http://sms.hspsms.com/sendSMS?" . $query;
     $ch = curl_init();
@@ -4684,7 +4685,6 @@ function sendOtp($dataArray)
     curl_close($ch);
 
     $arr = json_decode($data);
-
     return $arr;
 }
 

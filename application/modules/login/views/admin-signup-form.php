@@ -115,21 +115,20 @@
 
                             </div>
 
-                            <div class="form-group" id="otpBox">
-
+                           <!-- <div class="form-group" id="otpBox">
                                 <div class="d-flex">
                                     <div style="width:68%">
                                         <label class="text-success" id="otp_status"></label>
                                     </div>
                                     <div style="width:32%">
                                         <span id="resend_text"><button type="button" onclick="getOtp()" class="btn btn-sm btn-success verify" id="send_otp_btn" style="float:right">Send OTP</button></span>
-                                        <!-- <label class='text-info text-center' id="resend_text">resend in 30sec</label> -->
-                                        <!-- <label class="text-success">Verified</label>  -->
+                                       <label class='text-info text-center' id="resend_text">resend in 30sec</label>
+                                       <label class="text-success">Verified</label>  
                                     </div>
                                 </div>
-                                <!-- <label><span class="text-success">Otp send,Please verify!</span><span style="padding-left:44px">resend in 30sec</span></label> -->
+                               <label><span class="text-success">Otp send,Please verify!</span><span style="padding-left:44px">resend in 30sec</span></label>
                                 <input type="tel" maxlength="5" minlength="5" name="otp" id="otp" placeholder="Enter 5 Digit OTP" class="form-control user_input" required="1">
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <input type="password" type="password" name="password" id="password" class="form-control pass_input" placeholder="Password" required="1" autocomplete="off">
                             </div>
@@ -229,45 +228,45 @@
                                 console.log(data);
                                 if (data.responseText == "true") {
 
-                                    $("#send_otp_btn").prop('disabled', 'true');
-                                    $("#login_username").removeAttr('style');
-                                    $("#otp_status").text('Otp send,Please verify!');
-                                    getOtp();
+                                    // $("#send_otp_btn").prop('disabled', 'true');
+                                    // $("#login_username").removeAttr('style');
+                                    // $("#otp_status").text('Otp send,Please verify!');
+                                    // getOtp();
                                 } else {
-                                    $("#login_username").css('background-image', 'unset');
-                                    $("#otp_status").text('');
-                                    $("#send_otp_btn").prop('disabled', 'false');
-                                    clearInterval(resend_function);
-                                    $("#resend_text").html('<button type="button" onclick="getOtp()" class="btn btn-sm btn-success verify" id="send_otp_btn" style="float:right">Send OTP</button>');
+                                    // $("#login_username").css('background-image', 'unset');
+                                    // $("#otp_status").text('');
+                                    // $("#send_otp_btn").prop('disabled', 'false');
+                                    // clearInterval(resend_function);
+                                    // $("#resend_text").html('<button type="button" onclick="getOtp()" class="btn btn-sm btn-success verify" id="send_otp_btn" style="float:right">Send OTP</button>');
                                 }
                             }
                         },
                     },
-                    otp: {
-                        required: true,
-                        remote: {
-                            url: base_url + "login/Admin/checkOtp",
-                            type: "post",
-                            data: {
-                                number: function() {
-                                    return $("#login_username").val();
-                                },
-                                otp: function() {
-                                    return $("#otp").val();
-                                },
-                            },
-                            complete: function(data) {
-                                console.log(data);
-                                if (data.responseText == "true") {
+                    // otp: {
+                    //     required: true,
+                    //     remote: {
+                    //         url: base_url + "login/Admin/checkOtp",
+                    //         type: "post",
+                    //         data: {
+                    //             number: function() {
+                    //                 return $("#login_username").val();
+                    //             },
+                    //             otp: function() {
+                    //                 return $("#otp").val();
+                    //             },
+                    //         },
+                    //         complete: function(data) {
+                    //             console.log(data);
+                    //             if (data.responseText == "true") {
 
-                                    $("#otp").removeAttr('style');
+                    //                 $("#otp").removeAttr('style');
 
-                                } else {
-                                    $("#otp").css('background-image', 'unset');
-                                }
-                            }
-                        },
-                    },
+                    //             } else {
+                    //                 $("#otp").css('background-image', 'unset');
+                    //             }
+                    //         }
+                    //     },
+                    // },
                     //   registration_date: {
                     //     required: true,
                     //   },
@@ -297,11 +296,11 @@
 
                     //     equalTo: "Retype password not matched",
                     // },
-                    otp: {
-                        required: "Otp did not matched",
-                        remote: "Otp did not match",
+                    // otp: {
+                    //     required: "Otp did not matched",
+                    //     remote: "Otp did not match",
 
-                    },
+                    // },
 
                 },
                 submitHandler: function(form) {                    
