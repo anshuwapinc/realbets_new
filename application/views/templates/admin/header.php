@@ -266,6 +266,7 @@
                         </li>
                      <?php }
                      ?>
+
                      <?php
                      if (get_user_type() == 'Super Admin' || get_user_id() == '32222') { ?>
                         <li class="sidebar-dropdown">
@@ -328,6 +329,7 @@
                      ?>
                      <?php
                      if (get_user_type() == 'User') { ?>
+                        <li class=""><a class="head-link endcooki" href="<?php echo base_url('online_bank_transfer'); ?>"> <span><i class="fas fa-inr"></i>Online Bank Transfer</span></a></li>
                         <li class=""><a class="head-link endcooki" href="<?php echo base_url('deposituser'); ?>"> <span><i class="fas fa-inr"></i>Deposit</span></a></li>
                         <li class=""><a class="head-link endcooki" href="<?php echo base_url('withdrawuser'); ?>"> <span><i class="fas fa-inr"></i>Withdraw</span></a></li>
                      <?php } ?>

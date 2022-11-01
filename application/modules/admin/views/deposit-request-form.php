@@ -194,12 +194,12 @@
 
                                             ?>
                                         </div>
-                                        <div class="form-group">
+                                      
+                                        <!-- <div class="form-group">
                                             <label for="inputEmail3" class="col-form-label">Upload Screenshot Of Payment</label>
                                             <?php
                                             $data = array(
                                                 'type' => 'file',
-
                                                 'name' => 'screenshot',
                                                 'id' => 'screenshot',
                                                 'value' => set_value('screenshot', empty($screenshot) ? NULL : $screenshot),
@@ -210,7 +210,7 @@
                                             echo form_input($data);
 
                                             ?>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -259,9 +259,9 @@
                     required: true,
 
                 },
-                screenshot: {
-                    required: true,
-                },
+                // screenshot: {
+                //     required: true,
+                // },
 
             },
             messages: {
@@ -274,9 +274,9 @@
                 reference_code: {
                     required: "Preffered method is required",
                 },
-                screenshot: {
-                    required: "upload screenshot",
-                }
+                // screenshot: {
+                //     required: "upload screenshot",
+                // }
             },
         });
 
@@ -317,7 +317,7 @@
                             $("#other_method").show();
                             $("#user_fill_detail").show();
                         }
-               
+
                     } else {
                         alert("sorry for inconvient we are not accepting this mode of payment please try another payment mode");
                     }

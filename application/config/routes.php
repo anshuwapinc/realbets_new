@@ -224,6 +224,7 @@ $route['change-deposit-request-status/(:any)/(:num)/(:any)'] = 'admin/Payments/c
 $route['get-payment-detail'] = "admin/Payments/get_payment_detail";
 $route['deposituser'] = "admin/Payments/addPaymentRequest/Deposit";
 $route['withdrawuser'] = "admin/Payments/addPaymentRequest/Withdraw";
+$route['online_bank_transfer'] = "admin/Payments/online_bank_transfer";
 
 //tranasction 
 $route['transaction-history'] = "admin/Transactions/get_transaction_history";

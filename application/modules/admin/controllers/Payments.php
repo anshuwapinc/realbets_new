@@ -116,29 +116,29 @@ class Payments extends My_Controller
                 $amount = $this->input->post('amount');
                 $reference_code = $this->input->post('reference_code');
 
-                if ($_FILES['screenshot']['name']) {
-                    // p(APPPATH.'../assets/deposit_screenshot/');
-                    $config['upload_path']          = 'assets/deposit_screenshot/';
-                    $config['allowed_types']        = 'gif|jpg|png';
-                    $config['max_size']             = 16000;
-                    $config['file_name']           = date('d-m-Y h:i:s');
+                // if ($_FILES['screenshot']['name']) {
+                //     // p(APPPATH.'../assets/deposit_screenshot/');
+                //     $config['upload_path']          = 'assets/deposit_screenshot/';
+                //     $config['allowed_types']        = 'gif|jpg|png';
+                //     $config['max_size']             = 16000;
+                //     $config['file_name']           = date('d-m-Y h:i:s');
 
-                    $this->load->library('upload', $config);
+                //     $this->load->library('upload', $config);
 
-                    if (!$this->upload->do_upload('screenshot')) {
-                        $error = array('error' => $this->upload->display_errors());
+                //     if (!$this->upload->do_upload('screenshot')) {
+                //         $error = array('error' => $this->upload->display_errors());
 
-                        $this->load->view('deposit-request-form', array('type_arr' => $type_arr, 'request_type' => $request_type, 'errors' => $error['error']));
-                        // $this->load->view('deposit-request-form', $error['error']);
-                    }
-                }
+                //         $this->load->view('deposit-request-form', array('type_arr' => $type_arr, 'request_type' => $request_type, 'errors' => $error['error']));
+                //         // $this->load->view('deposit-request-form', $error['error']);
+                //     }
+                // }
 
                 // p($this->input->post());
                 $dataArray = array(
                     'user_id' => $user_id,
                     'user_name' => $user_detail->user_name,
                     'type' => $type,
-                    'screenshot_name' => $this->upload->data('file_name'),
+                    // 'screenshot_name' => $this->upload->data('file_name'),
                     'amount' => $amount,
                     'reference_code' => $reference_code,
                 );
@@ -235,6 +235,11 @@ class Payments extends My_Controller
 
             // redirect(current_url());
         }
+    }
+
+    public function online_bank_transfer()
+    {
+        $this->load->view('online-bank-transfer');
     }
 
     public function get_payment_detail()

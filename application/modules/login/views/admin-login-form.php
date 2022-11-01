@@ -83,15 +83,14 @@
 			border-bottom: 1px solid #757575;
 		}
 
-		.contact-body{
+		.contact-body {
 			padding: 6px;
 		}
 
-		@media (pointer:fine)
-		{
-		  .contact_support_div{
-			width:350px !important
-		  }	
+		@media (pointer:fine) {
+			.contact_support_div {
+				width: 350px !important
+			}
 		}
 	</style>
 	<script type="text/javascript">
@@ -194,7 +193,9 @@
 			Contact Support
 		</div>
 		<div class="contact-body text-center">
-			<a class="btn btn-success  " href="tel:9530201155">+91 9530201155</a>			
+			<!-- <a class="btn btn-success  " href="tel:9530201155">+91 9530201155</a> -->
+			<a class="btn btn-success  " href="tel:9530201155">venturehubenterprises@gmail.com</a>
+
 		</div>
 	</div>
 
