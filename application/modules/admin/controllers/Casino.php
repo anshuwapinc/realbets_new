@@ -1305,4 +1305,84 @@ class Casino extends My_Controller
         }
         // p($events);
     }
+
+    public function CreateJwtAndLaunchCasino()
+    {
+        $game = $this->input->post('game');
+
+        if ($game == "lucky7") {
+            $game = "lucky7a";
+        } else if ($game == "lucky7eu") {
+            $game = "lucky7b";
+        } else if ($game == "dt20") {
+            $game = "getdt";
+        } else if ($game == "teenpatti/t20") {
+            $game = "teen20";
+        } else if ($game == "card32a") {
+            $game = "get32a";
+        } else if ($game == "card32b") {
+            $game = "get32b";
+        } else if ($game == "teenpatti/oneday") {
+            $game = "odtp";
+        } else if ($game == "teenpatti/test") {
+            $game = "ttp";
+        }
+
+        $event_type_arr = getCustomConfigItem('diamond_casino_event_type');
+
+        $event_type = $event_type_arr[$game];
+
+        if (get_user_type() == 'User') {
+
+            $block_markets = get_users_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
+        } else if (get_user_type() == 'Admin') {
+
+            $block_markets = get_admin_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
+        } else if (get_user_type() == 'Hyper Super Master') {
+
+            $block_markets = get_hyper_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
+        } else if (get_user_type() == 'Super Master') {
+            $block_markets = get_super_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
+        } else if (get_user_type() == 'Master') {
+            $block_markets = get_master_block_markets(array('user_id' => get_user_id(), 'type' => 'Sport'));
+        }
+
+        $is_blocked = false;
+
+        foreach ($block_markets as $block_market) {
+            if ($block_market['event_type_id'] == $event_type) {
+                $is_blocked = true;
+            }
+        }
+
+
+        if ($is_blocked == true) {
+            $result = array(
+                'message' => "Casino Blocked",
+                'status' => "200"
+            );
+            echo json_encode($result);
+            exit;
+        } else {
+            $payload = array(
+                'username' => get_user_id(),
+                'sitename' => 'http://maxcric247.bet/',
+                'balance' => count_total_balance(get_user_id()),
+                'is_react' => "No"
+            );
+            $game = $this->input->post('game');
+            $jwt_token =  get_jwt_casino_token($payload);
+
+            // $casino_link = "http://allcasino.zone/casino/" . $game . "/" . $jwt_token;
+            $casino_link = "http://allcasino.zone/casino/" . $game . "/" . $jwt_token;
+            // p($casino_link);
+            $result = array(
+                'message' => "success",
+                'casino_link' => $casino_link,
+                'status' => "200"
+            );
+            echo json_encode($result);
+            exit;
+        }
+    }
 }
