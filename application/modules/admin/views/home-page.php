@@ -467,7 +467,7 @@ h81.92V199.936z"></path>
 
             <?php if (!empty($casino_events['aaa'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('teenpatti/t20')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
+               <a onclick="CreateJwtAndLaunchCasino('teenpatti/t20')"><img style="width: 100%;  padding-bottom: 6rem;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
                </div>
             <?php } ?>
 

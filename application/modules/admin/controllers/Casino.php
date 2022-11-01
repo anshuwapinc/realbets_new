@@ -1366,7 +1366,7 @@ class Casino extends My_Controller
         } else {
             $payload = array(
                 'username' => get_user_id(),
-                'sitename' => 'http://maxcric247.bet/',
+                'sitename' => 'https://realbets.in/admin/dashboard',
                 'balance' => count_total_balance(get_user_id()),
                 'is_react' => "No"
             );
