@@ -437,13 +437,13 @@ h81.92V199.936z"></path>
             </div> -->
             <?php if (!empty($casino_events['t20'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('teenpatti/test')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/TT20.jpg">
+               <a onclick="CreateJwtAndLaunchCasino('teenpatti/t20')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/TT20.jpg">
                   </a>
                </div>
             <?php } ?>
             <?php if (!empty($casino_events['ltp'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('lucky7')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/3PT.jpg">
+               <a onclick="CreateJwtAndLaunchCasino('teenpatti/oneday')"> <img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/3PT.jpg">
 
                   </a>
                </div>
@@ -453,21 +453,21 @@ h81.92V199.936z"></path>
             </div> -->
             <?php if (!empty($casino_events['7ud'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('teenpatti/oneday')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/7U7D.jpg"></a>
+               <a onclick="CreateJwtAndLaunchCasino('lucky7')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/7U7D.jpg"></a>
                </div>
             <?php } ?>
 
 
             <?php if (!empty($casino_events['dt20'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('card32b')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/dt.jpg"></a>
+               <a onclick="CreateJwtAndLaunchCasino('dt20')"><img style="width: 100%;" src="<?php echo base_url(); ?>assets/app/dt.jpg"></a>
                </div>
             <?php } ?>
 
 
             <?php if (!empty($casino_events['aaa'])) { ?>
                <div class="col-md-2 sol-sm-2 col-lg-2 col-xs-4">
-               <a onclick="CreateJwtAndLaunchCasino('teenpatti/t20')"><img style="width: 100%;  padding-bottom: 6rem;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
+               <a onclick="CreateJwtAndLaunchCasino('aaa')"><img style="width: 100%;  padding-bottom: 6rem;" src="<?php echo base_url(); ?>assets/app/aaa.jpg"></a>
                </div>
             <?php } ?>
 
